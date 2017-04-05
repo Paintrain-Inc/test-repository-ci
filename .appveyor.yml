@@ -24,12 +24,14 @@ build_script:
   - echo Generating CMake files %APPVEYOR_BUILD_WORKER_IMAGE% x64
   - cmake -G "%CMAKE_VS_VERSION% Win64" ..
   - msbuild test-repository-ci.vcxproj /p:Platform=x64 /p:Configuration=Release /verbosity:quiet
+  - msbuild test-repository-ci.vcxproj /p:Platform=x64 /p:Configuration=Debug /verbosity:quiet
   - dir 
   - cd ..
   - mkdir build32
   - cd build32
-  - echo Generating CMake files %APPVEYOR_BUILD_WORKER_IMAGE% x32
+  - echo Generating CMake files %APPVEYOR_BUILD_WORKER_IMAGE% x86
   - cmake -G "%CMAKE_VS_VERSION%" ..
-  - msbuild test-repository-ci.vcxproj /p:Platform=x32 /p:Configuration=Release /verbosity:quiet
+  - msbuild test-repository-ci.vcxproj /p:Platform=x86 /p:Configuration=Release /verbosity:quiet
+  - msbuild test-repository-ci.vcxproj /p:Platform=x86 /p:Configuration=Debug /verbosity:quiet
   - cd ..
   - echo Done!
