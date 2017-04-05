@@ -7,6 +7,7 @@ version: "{build}"
 os:
   - Visual Studio 2013
   - Visual Studio 2015
+  - Visual Studio 2017
 
 environment:
   PYTHON_PATH: "C:/Python35"
@@ -21,6 +22,6 @@ build_script:
   - "SET PATH=C:\\Python35;C:\\Python35\\Scripts;%PATH%"
   - mkdir build64
   - pushd build64
-  - echo Generating 64-bit CMake files for $env:PLATFORM
-  - cmake -G "$env:PLATFORM Win64" ..
+  - echo Generating 64-bit CMake files for %env:PLATFORM%
+  - cmake -G "%env:PLATFORM% Win64" ..
   - msbuild test-repository-ci.vcxproj /p:Platform=x64 /p:Configuration=Release /verbosity:quiet
