@@ -17,6 +17,6 @@ branches:
 build_script:
   - mkdir build64
   - pushd build64
-  - ps: echo Generating CMake files $env:PLATFORM;
+  - ps: echo Generating CMake files $env:CMAKE_VS_VERSION
   - ps: cmake;
   - msbuild test-repository-ci.vcxproj /p:Platform=x64 /p:Configuration=Release /verbosity:quiet
