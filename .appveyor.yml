@@ -22,6 +22,7 @@ build_script:
   - "SET PATH=C:\\Python35;C:\\Python35\\Scripts;%PATH%"
   - mkdir build64
   - pushd build64
+  - Get-ChildItem Env:
   - echo Generating 64-bit CMake files for $env:%PLATFORM%
   - cmake -G "$env:%PLATFORM%" ..
   - msbuild test-repository-ci.vcxproj /p:Platform=x64 /p:Configuration=Release /verbosity:quiet
