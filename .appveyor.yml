@@ -24,7 +24,7 @@ build_script:
   - echo Generating CMake files %APPVEYOR_BUILD_WORKER_IMAGE% x64
   - cmake -G "%CMAKE_VS_VERSION% Win64" ..
   - msbuild test-repository-ci.vcxproj /p:Platform=x64 /p:Configuration=Release /verbosity:quiet
-  - dir build64
+  - dir 
   - popd
   - mkdir build32
   - pushd build32
