@@ -5,4 +5,5 @@ Repository for CI system testing
 | Platform | Build Status |
 |:--------:|:------------:|
 | Windows | [![Build status](https://ci.appveyor.com/api/projects/status/7wm67arteoycl0mi/branch/master?svg=true)](https://ci.appveyor.com/project/Paintrain-Inc/test-repository-ci/branch/master) |
+|  Linux  | [![Build Status](https://travis-ci.org/Paintrain-Inc/test-repository-ci.svg?branch=master)](https://travis-ci.org/Paintrain-Inc/test-repository-ci) |
 
