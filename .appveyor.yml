@@ -23,6 +23,6 @@ build_script:
   - mkdir build64
   - pushd build64
   - Get-ChildItem Env:
-  - ps: echo Generating CMake files %PLATFORM%
+  - ps: echo Generating CMake files $PLATFORM
   - ps: cmake 
   - msbuild test-repository-ci.vcxproj /p:Platform=x64 /p:Configuration=Release /verbosity:quiet
