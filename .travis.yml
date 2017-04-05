@@ -1,1 +1,28 @@
+# Build Configuration for Travis CI
+# https://travis-ci.org
 
+dist: trusty
+sudo: required
+language: cpp
+
+matrix:
+  # Show final status immediately if a test fails.
+  fast_finish: true
+  include:
+    # Linux GCC debug build.
+    - os: linux
+      compiler: gcc
+      env: VULKAN_BUILD_TARGET=LINUX
+    # Linux clang debug build.
+    - os: linux
+      compiler: clang
+      env: VULKAN_BUILD_TARGET=LINUX
+
+before_install:
+  - echo "Before install"
+
+script:
+  - mkdir build64 
+  - cd build64
+  - cmake ..
+  - make
