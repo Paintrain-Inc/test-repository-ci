@@ -1,1 +1,26 @@
+# Windows Build Configuration for AppVeyor
+# http://www.appveyor.com/docs/appveyor-yml
 
+# build version format
+version: "{build}"
+
+os:
+  - Visual Studio 2013
+  - Visual Studio 2015
+
+environment:
+  PYTHON_PATH: "C:/Python35"
+  PYTHON_PACKAGE_PATH: "C:/Python35/Scripts"
+
+branches:
+  only:
+    - master
+
+# This replaces "automatic building" that would be defined under build:
+build_script:
+  - "SET PATH=C:\\Python35;C:\\Python35\\Scripts;%PATH%"
+  - mkdir build64
+  - pushd build32
+  - echo Generating 64-bit CMake files for Visual Studio %VS_VERSION%
+  - cmake -G "Visual Studio %VS_VERSION% Win64" ..
+  - msbuild test-repository-ci.vcxproj /p:Platform=x64 /p:Configuration=Release /verbosity:quiet
