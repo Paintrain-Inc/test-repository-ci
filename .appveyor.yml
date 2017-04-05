@@ -20,7 +20,7 @@ branches:
 build_script:
   - "SET PATH=C:\\Python35;C:\\Python35\\Scripts;%PATH%"
   - mkdir build64
-  - pushd build32
+  - pushd build64
   - echo Generating 64-bit CMake files for Visual Studio %VS_VERSION%
   - cmake -G "Visual Studio %VS_VERSION% Win64" ..
   - msbuild test-repository-ci.vcxproj /p:Platform=x64 /p:Configuration=Release /verbosity:quiet
