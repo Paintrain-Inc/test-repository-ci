@@ -15,16 +15,19 @@ branches:
 
 # This replaces "automatic building" that would be defined under build:
 build_script:
+  - if "%APPVEYOR_BUILD_WORKER_IMAGE%" == "Visual Studio 2013" (set CMAKE_VS_VERSION = "Visual Studio 12 2013")
+  - if "%APPVEYOR_BUILD_WORKER_IMAGE%" == "Visual Studio 2015" (set CMAKE_VS_VERSION = "Visual Studio 14 2015")
+  - if "%APPVEYOR_BUILD_WORKER_IMAGE%" == "Visual Studio 2017" (set CMAKE_VS_VERSION = "Visual Studio 15 2017")
   - mkdir build64
   - pushd build64
   - set
-  - echo "Generating CMake files %APPVEYOR_BUILD_WORKER_IMAGE% x64"
-  - cmake -G "%APPVEYOR_BUILD_WORKER_IMAGE%" ..
+  - echo Generating CMake files %APPVEYOR_BUILD_WORKER_IMAGE% x64
+  - cmake -G "%CMAKE_VS_VERSION% Win64" ..
   - msbuild test-repository-ci.vcxproj /p:Platform=x64 /p:Configuration=Release /verbosity:quiet
   - popd
   - mkdir build32
   - pushd build32
-  - echo "Generating CMake files %APPVEYOR_BUILD_WORKER_IMAGE% x32"
+  - echo Generating CMake files %APPVEYOR_BUILD_WORKER_IMAGE% x32
   - cmake -G "%APPVEYOR_BUILD_WORKER_IMAGE%" ..
   - msbuild test-repository-ci.vcxproj /p:Platform=x32 /p:Configuration=Release /verbosity:quiet
   - popd
