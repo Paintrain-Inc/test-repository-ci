@@ -23,6 +23,6 @@ build_script:
   - mkdir build64
   - pushd build64
   - Get-ChildItem Env:
-  - echo Generating 64-bit CMake files for $Env:APPVEYOR_BUILD_WORKER_IMAGE
-  - cmake -G "$Env:APPVEYOR_BUILD_WORKER_IMAGE" ..
+  - ps: echo Generating 64-bit CMake files for $Env:APPVEYOR_BUILD_WORKER_IMAGE
+  - ps: cmake -G "$Env:APPVEYOR_BUILD_WORKER_IMAGE" ..
   - msbuild test-repository-ci.vcxproj /p:Platform=x64 /p:Configuration=Release /verbosity:quiet
