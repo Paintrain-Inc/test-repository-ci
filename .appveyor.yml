@@ -18,6 +18,6 @@ build_script:
   - mkdir build64
   - pushd build64
   - set
-  - echo Generating CMake files $env:APPVEYOR_BUILD_WORKER_IMAGE
+  - echo Generating CMake files %APPVEYOR_BUILD_WORKER_IMAGE%
   - ps: cmake;
   - msbuild test-repository-ci.vcxproj /p:Platform=x64 /p:Configuration=Release /verbosity:quiet
